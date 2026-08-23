@@ -1,0 +1,17 @@
+resources:
+  jobs:
+    tarefa_ingestao:
+      name: tarefa_ingestao
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "5"
+      tasks:
+        - task_key: tarefa_ingestao
+          spark_python_task:
+            python_file: ../src/ingestao.py
+          environment_key: Default
+      queue:
+        enabled: true
+
+      performance_target: PERFORMANCE_OPTIMIZED

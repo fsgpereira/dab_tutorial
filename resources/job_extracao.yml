@@ -1,0 +1,18 @@
+resources:
+  jobs:
+    extracao_api_job:
+      name: "Extração API para Delta - DABs"
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "5"
+      tasks:
+        - task_key: "tarefa_extracao_e_delta"
+          environment_key: Default
+          notebook_task:
+            notebook_path: "../src/extracao_api.ipynb"
+            base_parameters:
+              bundle_target: "${bundle.target}"
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

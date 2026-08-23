@@ -1,0 +1,25 @@
+resources:
+  jobs:
+    meu_teste_dbt:
+      name: "[${bundle.target}] Teste dbt via DABs"
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "5"
+            dependencies:
+              - "dbt-core>=1.5.0"
+              - "dbt-databricks>=1.5.0"
+      tasks:
+        - task_key: tarefa_dbt
+          environment_key: Default
+          dbt_task:
+            project_directory: "../src/meu_projeto_dbt" # Aponta para a pasta do dbt
+            catalog: "workspace" # Usando o catálogo que funcionou no seu DLT
+            schema: "schema_${bundle.target}" # Separação dinâmica (schema_dev)
+            warehouse_id: "529a8e24198f8457" # Substitua pelo código que você copiou
+            commands:
+              - "dbt debug" # Verifica se a conexão automática funcionou
+              - "dbt run" # Roda a nossa query SQL
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED

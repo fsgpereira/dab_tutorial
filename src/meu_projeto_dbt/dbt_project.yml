@@ -1,0 +1,8 @@
+name: "meu_projeto_dbt"
+version: "1.0.0"
+config-version: 2
+profile: "default" # O Databricks preenche isso automaticamente!
+
+models:
+  meu_projeto_dbt:
+    +materialized: table

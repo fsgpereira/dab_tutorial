@@ -13,6 +13,7 @@ resources:
             notebook_path: "../src/extracao_api.ipynb"
             base_parameters:
               bundle_target: "${bundle.target}"
+              limite_registros: "${var.limite_registros}"
       queue:
         enabled: true
       performance_target: PERFORMANCE_OPTIMIZED

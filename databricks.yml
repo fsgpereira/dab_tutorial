@@ -18,6 +18,9 @@ variables:
     description: The catalog to use
   schema:
     description: The schema to use
+  limite_registros:
+    description: "Quantidade de registros para extrair da API"
+    default: "50"
 
 targets:
   dev:
@@ -33,6 +36,7 @@ targets:
     variables:
       catalog: workspace
       schema: ${workspace.current_user.short_name}
+      limite_registros: "15"
   prod:
     mode: production
     workspace:

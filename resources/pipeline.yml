@@ -1,0 +1,13 @@
+resources:
+  pipelines:
+    meu_pipeline_logistica:
+      name: "[${bundle.target}] Pipeline de Logística DLT"
+      serverless: true
+      photon: true
+      channel: "CURRENT"
+      catalog: "workspace"
+      target: "schema_${bundle.target}" # O schema será dinâmico: schema_dev ou schema_prod
+      development: true
+      libraries:
+        - file:
+            path: "../src/pipeline_dlt.py"

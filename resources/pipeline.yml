@@ -7,7 +7,6 @@ resources:
       channel: "CURRENT"
       catalog: "workspace"
       target: "schema_${bundle.target}" # O schema será dinâmico: schema_dev ou schema_prod
-      development: true
       libraries:
         - file:
             path: "../src/pipeline_dlt.py"
